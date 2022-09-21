@@ -1,4 +1,4 @@
-package ru.netology.ru.netology.sqr;
+package ru.netology.sqr;
 
 public class SQRService {
 
@@ -13,15 +13,18 @@ public class SQRService {
      * @return Количество квадратов чисел от 10 до 99,
      * лежащих в диапазоне от minSquare до maxSquare включительно.
      */
-    public int countSquaresInRange(int minSquare, int maxSquare) {
+    public int countSquaresInRange(long minSquare, long maxSquare) {
+        // поменять местами границы диапазона, если левая больше правой
         if (maxSquare < minSquare) {
-            int temp = maxSquare;
+            long temp = maxSquare;
             maxSquare = minSquare;
             minSquare = temp;
         }
+        // обнулить левую границу если она отрицательная
         if (minSquare < 0) {
             minSquare = 0;
         }
+        // обнулить правую границу если она отрицательная
         if (maxSquare < 0) {
             maxSquare = 0;
         }
@@ -29,6 +32,8 @@ public class SQRService {
         int upperNumbersLimit = 99;
         int count = 0;
 
+        // в ТЗ не сказано, что числа от 10 до 99 включительно,
+        // поэтому по смыслу "до" квадрат 99 не включается в подсчет
         for (int i = minNumber; i < upperNumbersLimit; i++) {
             long square = i * i;
             if (square >= minSquare) {
